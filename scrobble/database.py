@@ -58,8 +58,7 @@ def insert_user(user_ID, token, record_time):
 	now_time = datetime.now()
 	last_loved_song = "None"
 	values = [user_ID, token, record_time, start_times, now_time, last_loved_song]
-	cur.execute('insert into users values(%s, %s, %s, %s, %s, %s)',
-					values)
+	cur.execute('insert into users values(%s, %s, %s, %s, %s, %s)', values)
 	conn.commit()
 	end(conn, cur)
 

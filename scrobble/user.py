@@ -23,8 +23,9 @@ def get_url(user_ID):
 	network = pylast.LastFMNetwork(api_key = API_KEY, api_secret = 
 	    API_SECRET)
 	sg = pylast.SessionKeyGenerator(network)
-	if (re.search('/Users/cai/caiProject/django_project/',sys.path[0])):
-		callback_url = 'http://127.0.0.1:8000/third?username=%s'%(user_ID)
+	
+	if (re.search('/Users/hanjiyun/Project/', sys.path[1])):
+		callback_url = 'http://127.0.0.1:8080/third?username=%s'%(user_ID)
 	else:
 		callback_url= 'http://scrobble.chom.me/third?username=%s'%(user_ID)
 	url = sg.get_web_auth_url(callback_url)
@@ -32,4 +33,4 @@ def get_url(user_ID):
 
 
 if __name__ == '__main__':
-	verify_user(168488)
+	verify_user(180848)

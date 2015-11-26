@@ -57,6 +57,7 @@ def record(request):
 def run(request):
 	#read the user list from database
 	users = database.get_user()
+
 	for user in  users:
 		#read playing songs from the xiami
 		titles, artists, track_times, record_time = scrobble.xiami(user)

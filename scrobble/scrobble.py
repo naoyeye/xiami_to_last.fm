@@ -102,6 +102,7 @@ def xiami_loved(user):
 									href=re.compile('/song/\d+'))
 	songs_IDs = [re.search('/song/(\d+)', songs_IDs_html['href']).group(1)
 				 for songs_IDs_html in songs_IDs_htmls]
+
 	if last_loved_song == 'None':
 		loved_songs_IDs = songs_IDs
 	elif last_loved_song in songs_IDs:
@@ -111,10 +112,13 @@ def xiami_loved(user):
 		loved_songs_IDs = songs_IDs
 
 	loved_songs = []
+	
+
 	for loved_song_ID in loved_songs_IDs:
 		r = requests.get('http://www.xiami.com/song/%s'%(loved_song_ID),
 							headers=headers)
 		soup = BeautifulSoup(r.content)
+
 		title_html = soup.title.text
 		title = title_html[:-2]
 		album_artist_html = soup.find('table', id='albums_info')
@@ -131,7 +135,9 @@ def xiami_loved(user):
 		artist = '&'.join(artists)
 		track = Track(loved_song_ID, title, album, artist)
 		loved_songs.append(track)
-	return loved_songs		
+
+	return loved_songs
+
 def lastfm_loved(loved_songs, user):
 	'''
 	Scrobble the user's today loved songs to the Last fm 
@@ -175,6 +181,6 @@ def lastfm(titles, artists, track_times, user):
 	gevent.joinall(get_spawns())
 
 if __name__ == '__main__':
-	xiami_loved((168488, '33'))
+	xiami_loved((180848, '33'))
 
 

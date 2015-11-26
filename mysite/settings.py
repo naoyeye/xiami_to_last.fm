@@ -1,20 +1,20 @@
 # Django settings for mysite project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('PatrickCai', 'caizehao1@gmail.com'),
+    ('example', 'example@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cliffedge1@gmail.com'
-EMAIL_HOST_PASSWORD = '13163318773a'
+EMAIL_HOST_USER = 'example@example.com'
+EMAIL_HOST_PASSWORD = 'example'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'some.mail@inter.net'
+DEFAULT_FROM_EMAIL = 'example@inter.net'
 
 import os
 
@@ -24,10 +24,10 @@ if 'SERVER_SOFTWARE' in os.environ:
     )
 else:
     # Make `python manage.py syncdb` works happy!
-    MYSQL_HOST = 'localhost'
+    MYSQL_HOST = '127.0.0.1'
     MYSQL_PORT = '3306'
     MYSQL_USER = 'root'
-    MYSQL_PASS = 'root'
+    MYSQL_PASS = ''
     MYSQL_DB   = 'scrobble'
 
 DATABASES = {
