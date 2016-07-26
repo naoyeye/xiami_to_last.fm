@@ -31,7 +31,7 @@ def xiami(user):
 	proxies = {'http': 'http://122.226.122.201:8080'}
 	xiami_url = 'http://www.xiami.com/space/charts-recent/u/%s'%(user[0])
 	r = requests.get(xiami_url, headers=headers)
-	soup = BeautifulSoup(r.content)
+	soup = BeautifulSoup(r.content, 'html5lib')
 	last_time = datetime.strptime(user[2], '%Y-%m-%d %H:%M:%S')
 	minutes = (datetime.now() - last_time).seconds/60
 	track_times = soup.findAll('td', class_='track_time')
@@ -97,7 +97,7 @@ def xiami_loved(user):
 
 	r = requests.get('http://www.xiami.com/space/feed/u/%s/type/9'%(
 					  user_ID), headers = headers)
-	soup = BeautifulSoup(r.content)
+	soup = BeautifulSoup(r.content, 'html5lib')
 	songs_IDs_htmls = soup.findAll('a', {'target':'_blank'},
 									href=re.compile('/song/\d+'))
 	songs_IDs = [re.search('/song/(\d+)', songs_IDs_html['href']).group(1)
@@ -117,7 +117,7 @@ def xiami_loved(user):
 	for loved_song_ID in loved_songs_IDs:
 		r = requests.get('http://www.xiami.com/song/%s'%(loved_song_ID),
 							headers=headers)
-		soup = BeautifulSoup(r.content)
+		soup = BeautifulSoup(r.content, 'html5lib')
 
 		title_html = soup.title.text
 		title = title_html[:-2]

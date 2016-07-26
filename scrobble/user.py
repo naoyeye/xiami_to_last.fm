@@ -24,8 +24,10 @@ def get_url(user_ID):
 	    API_SECRET)
 	sg = pylast.SessionKeyGenerator(network)
 	
+	# TODO:
+	# need to be improved
 	if (re.search('/Users/hanjiyun/Project/', sys.path[1])):
-		callback_url = 'http://127.0.0.1:8080/third?username=%s'%(user_ID)
+		callback_url = 'http://127.0.0.1:8000/third?username=%s'%(user_ID)
 	else:
 		callback_url= 'http://scrobble.chom.me/third?username=%s'%(user_ID)
 	url = sg.get_web_auth_url(callback_url)

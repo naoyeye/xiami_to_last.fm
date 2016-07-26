@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', RedirectView.as_view(url='/welcome')),
+    url(r'^$', RedirectView.as_view(url='/welcome', permanent=True)),
     url(r'^run$', views.run),
     url(r'^love$', views.love),
     url(r'^hello$', views.hello),
