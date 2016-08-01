@@ -62,6 +62,7 @@ def run(request):
 		#read playing songs from the xiami
 		titles, artists, track_times, record_time = scrobble.xiami(user)
 		if titles:
+			print 'titles: %s, artists: %s ' % (titles, artists)
 			scrobble.lastfm(titles, artists, track_times, user)
 
 			#modify the user information

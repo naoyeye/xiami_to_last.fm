@@ -28,7 +28,7 @@ def xiami(user):
 			   'Accept-Encoding': 'gzip, deflate',
 				'DNT': '1',
 				'Connection': 'keep-alive'}
-	proxies = {'http': 'http://122.226.122.201:8080'}
+	# proxies = {'http': 'http://122.226.122.201:8080'}
 	xiami_url = 'http://www.xiami.com/space/charts-recent/u/%s'%(user[0])
 	r = requests.get(xiami_url, headers=headers)
 	soup = BeautifulSoup(r.content, 'html5lib')
@@ -179,6 +179,7 @@ def lastfm(titles, artists, track_times, user):
 				  in zip(titles, artists, track_times)]
 		return spawns
 	gevent.joinall(get_spawns())
+	print '======= scrobbled! ======='
 
 if __name__ == '__main__':
 	xiami_loved((180848, '33'))
